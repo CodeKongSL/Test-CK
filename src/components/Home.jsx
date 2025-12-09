@@ -25,12 +25,7 @@ const EducationCard = ({ institution, degree, date, description }) => {
 };
 
 const Home = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [showImage, setShowImage] = useState(true);
-  const [countdown, setCountdown] = useState(3);
-  const [blur, setBlur] = useState(0);
-  const imageUrl = "/Ivan-Ivan.jpg";
 
   const educationList = [
     {
@@ -142,30 +137,6 @@ const Home = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Countdown and blur effect
-  useEffect(() => {
-    if (showImage) {
-      const countdownInterval = setInterval(() => {
-        setCountdown((prev) => {
-          if (prev <= 1) {
-            clearInterval(countdownInterval);
-            setShowImage(false);
-            setIsExpanded(true);
-            return 0;
-          }
-          return prev - 1;
-        });
-
-        // Increase blur effect
-        if (countdown > 1) {
-          setBlur(prev => Math.min(prev + 4, 10));
-        }
-      }, 1000);
-
-      return () => clearInterval(countdownInterval);
-    }
-  }, [showImage, countdown]);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -173,81 +144,21 @@ const Home = () => {
       transition={{ duration: 1 }}
       className="w-screen h-screen flex justify-center items-center relative overflow-hidden"
     >
-      {showImage ? (
-        <motion.div
-          initial={{ width: "50%", height: "60%" }}
-          animate={{
-            width: isMobile ? "90%" : "50%",
-            height: isMobile ? "50%" : "60%",
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-          }}
-          className="relative rounded-lg overflow-hidden shadow-2xl z-10"
-        >
-          <motion.img
-            src={imageUrl}
-            alt="Ivan"
-            className="w-full h-full object-cover"
-            style={{ 
-              filter: `blur(${blur}px)`,
-              transition: 'filter 0.5s ease-in-out'
-            }}
-            whileHover={{ scale: isMobile ? 1.02 : 1.05 }}
-            transition={{ duration: 0.3 }}
-          />
-          
-          {/* Stunning Countdown */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              duration: 0.5, 
-              type: "spring", 
-              stiffness: 300, 
-              damping: 10 
-            }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <motion.div
-              key={countdown}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.5 }}
-              transition={{ 
-                duration: 0.5, 
-                type: "spring", 
-                stiffness: 300, 
-                damping: 10 
-              }}
-              className="text-white text-[10rem] font-bold 
-                         bg-black bg-opacity-50 
-                         rounded-full 
-                         w-[250px] h-[250px] 
-                         flex items-center justify-center
-                         shadow-2xl border-4 border-white border-opacity-30"
-            >
-              {countdown}
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      ) : (
-        <motion.div
-          initial={{ width: "50%", height: "60%" }}
-          animate={{
-            width: isExpanded ? (isMobile ? "95%" : "90%") : (isMobile ? "90%" : "50%"),
-            height: isExpanded ? (isMobile ? "75%" : "90%") : (isMobile ? "50%" : "60%"),
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-          }}
-          className="relative rounded-lg overflow-hidden shadow-2xl z-10"
-        >
-          <div 
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 15,
+        }}
+        className="relative rounded-lg overflow-hidden shadow-2xl z-10"
+        style={{
+          width: isMobile ? "95%" : "90%",
+          height: isMobile ? "75%" : "90%",
+        }}
+      >
+        <div 
             className="w-full h-full overflow-y-auto scrollbar-hide flex flex-col" 
             style={{
               scrollbarWidth: 'none',
@@ -369,7 +280,6 @@ const Home = () => {
             </motion.div>
           </div>
         </motion.div>
-      )}
     </motion.div>
   );
 };
