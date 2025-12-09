@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { styles } from "../styles";
 import Projects from "./Projects";
 import ReachMe from "./ReachMe";
+import { EarthCanvas } from "./canvas";
 
 const EducationCard = ({ institution, degree, date, description }) => {
   return (
@@ -174,6 +175,19 @@ const Home = () => {
               className="flex flex-col justify-center items-center p-6 rounded-2xl pointer-events-auto min-h-screen"
               style={{ marginTop: "-10vh" }} // Added negative margin to move it higher
             >
+              {/* Earth Canvas - Only visible on mobile */}
+              {isMobile && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="w-full max-w-sm h-64 mb-6 mx-auto"
+                >
+                  <EarthCanvas />
+                </motion.div>
+              )}
+
               <h2 className={`${styles.sectionSubText} text-secondary mb-2 text-center`}>
                 Welcome to
               </h2>
