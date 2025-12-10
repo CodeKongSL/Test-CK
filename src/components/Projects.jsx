@@ -39,37 +39,37 @@ const Projects = () => {
 
   const projectsList = [
     {
-      title: "Google Drive Clone",
-      techStack: "Next.js, Tailwind CSS, Google API, Appwrite",
+      title: "POS System",
+      techStack: "Next.js, Tailwind CSS, MongoDB, golang",
       year: "2025",
-      description: "A comprehensive Google Drive clone featuring robust user authentication, seamless file upload capabilities, and advanced file sharing functionalities. Leveraging modern web technologies to create an intuitive cloud storage solution."
+      description: "POS System is a comprehensive point-of-sale solution designed to streamline retail operations. It features an intuitive interface for sales processing, inventory management, and customer relationship management, all built with modern web technologies for optimal performance and scalability.",
     },
     {
       title: "Fresh Track SL",
       techStack: "Flutter, Node.js, Supabase, Linear regression",
-      year: "On-going",
+      year: "2024",
       description: "An innovative mobile application bridging the gap between farmers and buyers. Provides real-time crop price insights and implements a sophisticated demand management system to optimize agricultural marketplace dynamics."
     },
     {
-      title: "Fresh Track SL Website",
+      title: "A/L Past Papers Website",
       techStack: "React, Tailwind CSS, Node.js",
-      year: "2024",
-      description: "Companion web platform for the Fresh Track SL mobile application. Delivers comprehensive information, resources, and interactive features to support farmers and buyers in making informed agricultural decisions.",
-      githubLink: "https://github.com/yourusername/fresh-track-website"
+      year: "2025",
+      description: "A user-friendly web platform offering a vast collection of A/L past examination papers. Features include advanced search capabilities, categorized listings, and downloadable resources to aid students in their exam preparations.",
+      githubLink: ""
     },
     {
-      title: "Real Estate Web Platform",
-      techStack: "Angular, Spring Boot, PostgreSQL",
-      year: "2024",
-      description: "A sophisticated real estate platform offering comprehensive property listings, secure user authentication, and advanced search capabilities. Designed to provide an seamless property discovery and management experience.",
-      githubLink: "https://github.com/yourusername/real-estate-platform"
+      title: "Wawanamaga",
+      techStack: "Flutter, Firebase, Google Maps API",
+      year: "2025",
+      description: "A mobile application designed to help farmers monitor and manage their agricultural activities efficiently. It integrates weather forecasting, crop management tools, and location-based services to enhance productivity and decision-making.",
+      githubLink: ""
     },
     {
       title: "Bone Rush 2D Animated Game",
       techStack: "Unity, C#, 2D Game Development",
-      year: "2023",
+      year: "Ongoing",
       description: "An engaging 2D animated game featuring unique mechanical interactions and an immersive gameplay experience. Developed with intricate design principles and creative game development techniques.",
-      githubLink: "https://github.com/yourusername/bone-rush-game"
+      githubLink: ""
     }
   ];
 
