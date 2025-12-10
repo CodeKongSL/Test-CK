@@ -41,8 +41,8 @@ const ReachMe = () => {
   };
 
   const contactItems = [
-    { icon: icons.email, label: "Email", value: "ivanakalanka@gmail.com", link: "mailto:ivanakalanka@gmail.com" },
-    { icon: icons.phone, label: "Phone", value: "+94 772606332" },
+    { icon: icons.email, label: "Email", value: "Thisendissanayake3@gmail.com", link: "mailto:Thisendissanayake3@gmail.com" },
+    { icon: icons.phone, label: "Phone", value: "+94 722042191" },
     { icon: icons.linkedin, label: "LinkedIn", value: "linkedin.com/in/ivan-de-zoysa", link: "https://www.linkedin.com/in/ivan-de-zoysa-28640b338/" },
     { icon: icons.github, label: "GitHub", value: "github.com/Ivan-6332", link: "https://github.com/Ivan-6332" },
     { icon: icons.bitbucket, label: "Bitbucket", value: "bitbucket.org/example", link: "https://bitbucket.org/example" }
