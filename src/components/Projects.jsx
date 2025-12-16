@@ -43,18 +43,23 @@ const Projects = () => {
       techStack: "Next.js, Tailwind CSS, MongoDB, golang",
       year: "2025",
       description: "POS System is a comprehensive point-of-sale solution designed to streamline retail operations. It features an intuitive interface for sales processing, inventory management, and customer relationship management, all built with modern web technologies for optimal performance and scalability.",
+      projectLink: "https://pos-frontend-tan.vercel.app/",
+      githubLink: ""
     },
     {
       title: "Fresh Track SL",
       techStack: "Flutter, Node.js, Supabase, Linear regression",
       year: "2024",
-      description: "An innovative mobile application bridging the gap between farmers and buyers. Provides real-time crop price insights and implements a sophisticated demand management system to optimize agricultural marketplace dynamics."
+      description: "An innovative mobile application bridging the gap between farmers and buyers. Provides real-time crop price insights and implements a sophisticated demand management system to optimize agricultural marketplace dynamics.",
+      projectLink: "",
+      githubLink: ""
     },
     {
       title: "A/L Past Papers Website",
       techStack: "React, Tailwind CSS, Node.js",
       year: "2025",
       description: "A user-friendly web platform offering a vast collection of A/L past examination papers. Features include advanced search capabilities, categorized listings, and downloadable resources to aid students in their exam preparations.",
+      projectLink: "https://kuppi-sigma.vercel.app/",
       githubLink: ""
     },
     {
@@ -62,6 +67,7 @@ const Projects = () => {
       techStack: "Flutter, Firebase, Google Maps API",
       year: "2025",
       description: "A mobile application designed to help farmers monitor and manage their agricultural activities efficiently. It integrates weather forecasting, crop management tools, and location-based services to enhance productivity and decision-making.",
+      projectLink: "",
       githubLink: ""
     },
     {
@@ -69,6 +75,7 @@ const Projects = () => {
       techStack: "Unity, C#, 2D Game Development",
       year: "Ongoing",
       description: "An engaging 2D animated game featuring unique mechanical interactions and an immersive gameplay experience. Developed with intricate design principles and creative game development techniques.",
+      projectLink: "",
       githubLink: ""
     }
   ];
