@@ -13,7 +13,7 @@ const HorizontalProjectCard = ({ title, techStack, year, description, githubLink
 
   return (
     <motion.div 
-      className="bg-black-200/60 p-4 sm:p-6 rounded-2xl border border-tertiary/40 min-w-[280px] sm:min-w-[320px] max-w-[280px] sm:max-w-[320px] h-auto sm:h-[320px] flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group backdrop-blur-sm"
+      className="bg-black-200/60 p-4 sm:p-6 rounded-2xl border border-tertiary/40 min-w-[280px] sm:min-w-[320px] max-w-[280px] sm:max-w-[320px] h-[380px] sm:h-[400px] flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group backdrop-blur-sm"
       whileHover={{ scale: 1.02 }}
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
@@ -42,9 +42,11 @@ const HorizontalProjectCard = ({ title, techStack, year, description, githubLink
       
       <p className="text-secondary text-[12px] sm:text-[13px] mb-2 sm:mb-3 font-light opacity-80">{year}</p>
 
-      <p className="text-white-100 text-[13px] sm:text-[14px] flex-grow leading-relaxed opacity-90 mb-4">
-        {description}
-      </p>
+      <div className="flex-grow overflow-y-auto mb-4 pr-1">
+        <p className="text-white-100 text-[13px] sm:text-[14px] leading-relaxed opacity-90">
+          {description}
+        </p>
+      </div>
 
       {/* View Project Button */}
       <motion.button
