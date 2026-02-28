@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { Education, Navbar, StarsCanvas, TechCanvas, Projects, ReachMe } from "./components";
+import { Education, Navbar, ParticleBackground, Projects, ReachMe } from "./components";
 import { AnimatePresence, motion } from "framer-motion";
 import Home from "./components/Home"; // Importing Home component
 
@@ -20,13 +20,8 @@ const App = () => {
           <Navbar onNavLinkClick={handlePageChange} activePage={activePage} />
         </div>
 
-        {/* Tech and stars background (persistent full screen) */}
-        <div className='fixed inset-0 z-0 bg-light-primary dark:bg-primary transition-colors duration-300'>
-          <div className="absolute inset-0 hidden dark:block">
-            <TechCanvas />
-          </div>
-          <StarsCanvas />
-        </div>
+        {/* High Performance HTML5 Canvas Background */}
+        <ParticleBackground />
 
         {/* Main content layout - Centered and full width */}
         <div className='relative z-10 pt-24 pb-12 flex justify-center w-full min-h-screen'>
