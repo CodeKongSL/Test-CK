@@ -184,7 +184,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true, amount: 0.3 }}
-            className="text-slate-700 dark:text-white-100 text-lg sm:text-xl text-center mb-10 max-w-3xl leading-relaxed"
+            className="text-slate-800 dark:text-white-100 text-lg sm:text-xl text-center mb-10 max-w-3xl leading-relaxed border border-slate-300/40 dark:border-slate-700/50 bg-white/20 dark:bg-black-100/30 backdrop-blur-md p-6 rounded-2xl shadow-xl"
           >
             Building scalable web and mobile applications with cutting-edge technologies.
             Specializing in React, Flutter, Node.js, Next.js, and modern cloud solutions.
