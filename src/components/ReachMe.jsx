@@ -75,7 +75,7 @@ const ReachMe = () => {
       transition={{ duration: 0.8 }}
       className='w-full max-w-4xl mx-auto flex flex-col items-center pointer-events-auto mt-12 mb-16'
     >
-      <h1 className={`${styles.sectionHeadText}`}>
+      <h1 className={`${styles.sectionHeadText} dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-accent dark:to-teal-400`}>
         Reach Us
       </h1>
 

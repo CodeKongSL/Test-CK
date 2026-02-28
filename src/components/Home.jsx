@@ -10,17 +10,18 @@ const EducationCard = ({ institution, degree, date, description }) => {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6 }}
+      whileHover={{ scale: 1.05, y: -10 }}
+      transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
       viewport={{ once: true, amount: 0.3 }}
-      className="bg-white/60 dark:bg-black-100/40 backdrop-blur-md p-6 rounded-2xl flex-1 border border-slate-200/50 dark:border-tertiary shadow-lg dark:shadow-none transition-colors duration-300"
+      className="bg-white/60 dark:bg-black-100/40 backdrop-blur-md p-6 rounded-2xl flex-1 border border-slate-200/50 dark:border-tertiary shadow-lg dark:hover:shadow-[0_0_30px_rgba(57,255,20,0.15)] hover:shadow-xl dark:hover:border-accent/50 transition-all duration-300 group cursor-pointer"
     >
-      <div className="mb-4 text-center sm:text-left">
-        <h3 className="text-slate-900 dark:text-white font-black uppercase tracking-tight text-[22px]">{institution}</h3>
+      <div className="mb-4 text-center sm:text-left transition-transform duration-300 group-hover:translate-x-2">
+        <h3 className="text-slate-900 dark:text-white font-black uppercase tracking-tight text-[22px] group-hover:text-blue-600 dark:group-hover:text-accent transition-colors duration-300">{institution}</h3>
         <p className="text-blue-600 dark:text-accent font-bold uppercase tracking-widest text-[14px]">{degree}</p>
       </div>
 
-      <p className="text-slate-700 dark:text-white-100 font-medium text-[15px] mb-2 text-center sm:text-left">{date}</p>
-      <p className="text-slate-600 dark:text-secondary text-[13px] mb-3 text-center sm:text-left">{description}</p>
+      <p className="text-slate-700 dark:text-white-100 font-medium text-[15px] mb-2 text-center sm:text-left transition-transform duration-300 group-hover:translate-x-2">{date}</p>
+      <p className="text-slate-600 dark:text-secondary text-[13px] mb-3 text-center sm:text-left transition-transform duration-300 group-hover:translate-x-2">{description}</p>
     </motion.div>
   );
 };
@@ -167,14 +168,14 @@ const Home = () => {
             </motion.div>
           )}
 
-          <h2 className={`text-xl sm:text-2xl text-slate-500 dark:text-accent font-bold tracking-widest mb-4 text-center uppercase`}>
+          <h2 className={`text-xl sm:text-2xl text-slate-500 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-accent dark:to-emerald-400 font-bold tracking-widest mb-4 text-center uppercase`}>
             Welcome to
           </h2>
-          <h1 className={`text-5xl sm:text-7xl font-black text-slate-900 dark:text-white text-center tracking-tighter uppercase leading-[0.9]`}>
-            CODE <span className="text-blue-600 dark:text-accent">KONG</span>
+          <h1 className={`text-5xl sm:text-7xl font-tech font-black text-slate-900 dark:text-white text-center tracking-tighter uppercase leading-[0.9]`}>
+            CODE <span className="text-blue-600 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-accent dark:to-teal-400">KONG</span>
           </h1>
 
-          <h2 className={`text-lg sm:text-xl text-slate-600 dark:text-secondary mt-6 mb-8 text-center font-medium max-w-2xl`}>
+          <h2 className={`text-lg sm:text-xl text-slate-600 dark:text-secondary mt-10 md:mt-12 mb-8 text-center font-medium max-w-2xl`}>
             Forget standard software. We build systems fast, seamless, and stress-free.
           </h2>
 

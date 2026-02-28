@@ -16,6 +16,7 @@ import { Folder, ChevronRight } from 'lucide-react';
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import ProjectsPopup from "./ProjectsPopup";
+import techMatrixHero from "../assets/tech_matrix_hero.png";
 
 const TechIcon = ({ Icon, tooltip }) => (
   <div className="group relative">
@@ -99,14 +100,20 @@ const Projects = () => {
   };
 
   return (
-    <>
+    <div className="relative w-full overflow-hidden rounded-3xl pt-4">
+      {/* Background Image Overlay */}
+      <div
+        className="absolute inset-0 z-[-1] opacity-5 dark:opacity-10 pointer-events-none bg-cover bg-center bg-no-repeat rounded-3xl mix-blend-screen"
+        style={{ backgroundImage: `url(${techMatrixHero})` }}
+      />
+
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         className='w-full max-w-4xl mx-auto flex flex-col items-center pointer-events-auto mt-12'
       >
-        <h1 className={`${styles.sectionHeadText}`}>
+        <h1 className={`${styles.sectionHeadText} dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-accent dark:to-teal-400`}>
           Projects
         </h1>
 
@@ -136,36 +143,36 @@ const Projects = () => {
         <div className="text-center mt-8">
           <motion.button
             onClick={handleProjectsClick}
-            className="group relative bg-white/60 dark:bg-black-100/40 hover:bg-white/80 dark:hover:bg-black-100/80 backdrop-blur-md
-              py-4 px-8 rounded-2xl text-slate-900 dark:text-white font-bold shadow-lg hover:shadow-xl 
-              transition-all duration-300 transform hover:-translate-y-1 
-              border border-slate-200/50 dark:border-tertiary"
+            className="group relative bg-slate-900 border border-accent/50 hover:bg-black-100 dark:bg-black-100 dark:hover:bg-primary backdrop-blur-md
+              py-4 px-10 rounded-2xl text-white font-tech tracking-wider uppercase shadow-[0_0_20px_rgba(57,255,20,0.2)] hover:shadow-[0_0_40px_rgba(57,255,20,0.4)]
+              transition-all duration-300 transform hover:-translate-y-1"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4 relative z-10">
               <motion.div
                 animate={{ rotate: [0, -10, 10, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                className="text-accent"
               >
-                <Folder size={24} />
+                <Folder size={26} />
               </motion.div>
-              <span className="text-lg">View Our Projects</span>
+              <span className="text-xl font-bold group-hover:text-accent transition-colors duration-300">View Our Projects</span>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
-                className="group-hover:translate-x-1 transition-transform"
+                className="group-hover:translate-x-2 transition-transform text-accent"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={24} />
               </motion.div>
             </div>
 
-            {/* Glow effect */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-slate-400/20 to-slate-300/10 dark:from-tertiary/20 dark:to-tertiary/10 
-              blur-xl group-hover:blur-2xl transition-all duration-300 -z-10" />
+            {/* Internal Glow Fill Effect */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 
+              opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
           </motion.button>
 
           <motion.p
@@ -186,7 +193,7 @@ const Projects = () => {
         projects={projectsList}
         githubProfileUrl={githubProfileUrl}
       />
-    </>
+    </div>
   );
 };
 
