@@ -6,16 +6,16 @@ import { SectionWrapper } from "../hoc";
 
 const EducationCard = ({ institution, degree, date, description }) => {
   return (
-    <div className="bg-black-200 p-4 rounded-2xl flex-1 border border-tertiary">
-      <div className="mb-3">
-        <h3 className="text-white font-bold text-[18px]">{institution}</h3>
-        <p className="text-secondary text-[13px]">{degree}</p>
+    <div className="bg-white/60 dark:bg-black-100/40 backdrop-blur-md p-6 rounded-2xl flex-1 border border-slate-200/50 dark:border-tertiary shadow-lg dark:shadow-none transition-colors duration-300">
+      <div className="mb-4">
+        <h3 className="text-slate-900 dark:text-white font-black uppercase tracking-tight text-[22px]">{institution}</h3>
+        <p className="text-blue-600 dark:text-accent font-bold uppercase tracking-widest text-[14px]">{degree}</p>
       </div>
-      
-      <p className="text-white-100 font-medium text-[15px] mb-2">{date}</p>
+
+      <p className="text-slate-700 dark:text-white-100 font-medium text-[15px] mb-2">{date}</p>
 
       {/* Added extra blank line for spacing */}
-      <p className="text-secondary text-[13px] mb-3">{description}</p>
+      <p className="text-slate-600 dark:text-secondary text-[13px] mb-3">{description}</p>
     </div>
   );
 };
@@ -39,30 +39,29 @@ const Education = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
-      className='w-full max-w-2xl bg-black-100 p-6 rounded-2xl pointer-events-auto border-2 border-tertiary'
+      className='w-full max-w-4xl mx-auto pointer-events-auto flex flex-col items-center'
     >
-      <h1 className={`${styles.sectionHeadText} text-white`}>
+      <h1 className={`${styles.sectionHeadText}`}>
         Who We Are
       </h1>
 
-      {/* Added extra margin for more space below this title */}
-      <h2 className={`${styles.sectionSubText} mb-6`}>
+      <h2 className={`${styles.sectionSubText}`}>
         About Code Kong
       </h2>
-      
-      <p className="text-white-100 text-lg mb-6">
+
+      <p className="text-slate-700 dark:text-secondary text-lg sm:text-xl text-center mb-10 max-w-3xl leading-relaxed">
         Code Kong (Pvt) Ltd is a professional, innovative software company committed to delivering exceptional digital solutions.
       </p>
 
       {/* Displaying company info cards in a straight line on larger screens */}
       <div className="flex flex-col sm:flex-row gap-5">
         {companyInfo.map((info, index) => (
-          <EducationCard 
+          <EducationCard
             key={`company-${index}`}
-            {...info} 
+            {...info}
           />
         ))}
       </div>

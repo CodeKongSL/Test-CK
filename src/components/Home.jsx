@@ -7,20 +7,20 @@ import { EarthCanvas } from "./canvas";
 
 const EducationCard = ({ institution, degree, date, description }) => {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true, amount: 0.3 }}
-      className="bg-transparent border-tertiary border p-4 rounded-2xl flex-1"
+      className="bg-white/60 dark:bg-black-100/40 backdrop-blur-md p-6 rounded-2xl flex-1 border border-slate-200/50 dark:border-tertiary shadow-lg dark:shadow-none transition-colors duration-300"
     >
-      <div className="mb-3">
-        <h3 className="text-white font-bold text-[18px]">{institution}</h3>
-        <p className="text-secondary text-[13px]">{degree}</p>
+      <div className="mb-4 text-center sm:text-left">
+        <h3 className="text-slate-900 dark:text-white font-black uppercase tracking-tight text-[22px]">{institution}</h3>
+        <p className="text-blue-600 dark:text-accent font-bold uppercase tracking-widest text-[14px]">{degree}</p>
       </div>
-      
-      <p className="text-white-100 font-medium text-[15px] mb-2">{date}</p>
-      <p className="text-secondary text-[13px] mb-3">{description}</p>
+
+      <p className="text-slate-700 dark:text-white-100 font-medium text-[15px] mb-2 text-center sm:text-left">{date}</p>
+      <p className="text-slate-600 dark:text-secondary text-[13px] mb-3 text-center sm:text-left">{description}</p>
     </motion.div>
   );
 };
@@ -130,11 +130,11 @@ const Home = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
-    
+
     window.addEventListener("resize", checkMobile);
-    
+
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
@@ -143,157 +143,133 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="w-screen h-screen flex justify-center items-center relative overflow-hidden"
+      className="w-full flex justify-center items-center relative overflow-visible"
     >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 15,
-        }}
-        className="relative rounded-lg overflow-hidden shadow-2xl z-10"
-        style={{
-          width: isMobile ? "95%" : "90%",
-          height: isMobile ? "75%" : "90%",
-        }}
-      >
-        <div 
-            className="w-full h-full overflow-y-auto scrollbar-hide flex flex-col" 
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-            }}
-          >
-            {/* Profile Section - Moved higher with negative margin-top */}
+      <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
+        {/* Profile Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex flex-col justify-center items-center w-full py-12 rounded-2xl pointer-events-auto min-h-[60vh]"
+        >
+          {/* Earth Canvas - Only visible on mobile */}
+          {isMobile && (
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="flex flex-col justify-center items-center p-6 rounded-2xl pointer-events-auto min-h-screen"
-              style={{ marginTop: "-10vh" }} // Added negative margin to move it higher
-            >
-              {/* Earth Canvas - Only visible on mobile */}
-              {isMobile && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  className="w-full max-w-sm h-64 mb-6 mx-auto"
-                >
-                  <EarthCanvas />
-                </motion.div>
-              )}
-
-              <h2 className={`${styles.sectionSubText} text-secondary mb-2 text-center`}>
-                Welcome to
-              </h2>
-              <h1 className={`${styles.sectionHeadText} text-white text-center`}>
-                Code Kong
-              </h1>
-
-              <h2 className={`${styles.sectionSubText} mb-3 text-center`}>
-                Professional Software Solutions
-              </h2>
-
-              <div className="mb-3"></div>
-
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-white-100 text-lg text-center mb-6"
-              >
-                Building scalable web and mobile applications with cutting-edge technologies.
-                Specializing in React, Flutter, Node.js, Next.js, and modern cloud solutions.
-              </motion.p>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="flex gap-6 mt-4"
-              >
-                {socialLinks.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-secondary transition-colors duration-300 p-2 rounded-full hover:bg-white-100 hover:bg-opacity-10"
-                    aria-label={link.name}
-                    title={link.name}
-                  >
-                    {link.icon}
-                  </a>
-                ))}
-              </motion.div>
-            </motion.div>
-
-            {/* Education Section */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
-              className='w-full p-6 rounded-2xl pointer-events-auto'
+              className="w-full max-w-sm h-64 mb-6 mx-auto"
             >
-              <h1 className={`${styles.sectionHeadText} text-white`}>
-                Who We Are
-              </h1>
+              <EarthCanvas />
+            </motion.div>
+          )}
 
-              <h2 className={`${styles.sectionSubText} mb-6`}>
-                About Code Kong
-              </h2>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="text-white-100 text-lg mb-6"
+          <h2 className={`text-xl sm:text-2xl text-slate-500 dark:text-accent font-bold tracking-widest mb-4 text-center uppercase`}>
+            Welcome to
+          </h2>
+          <h1 className={`text-5xl sm:text-7xl font-black text-slate-900 dark:text-white text-center tracking-tighter uppercase leading-[0.9]`}>
+            CODE <span className="text-blue-600 dark:text-accent">KONG</span>
+          </h1>
+
+          <h2 className={`text-lg sm:text-xl text-slate-600 dark:text-secondary mt-6 mb-8 text-center font-medium max-w-2xl`}>
+            Forget standard software. We build systems fast, seamless, and stress-free.
+          </h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="text-slate-700 dark:text-white-100 text-lg sm:text-xl text-center mb-10 max-w-3xl leading-relaxed"
+          >
+            Building scalable web and mobile applications with cutting-edge technologies.
+            Specializing in React, Flutter, Node.js, Next.js, and modern cloud solutions.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex gap-6 mt-4"
+          >
+            {socialLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-600 dark:text-white hover:text-slate-900 dark:hover:text-accent transition-colors duration-300 p-3 rounded-full hover:bg-slate-200 dark:hover:bg-accent/10 border border-transparent dark:hover:border-accent/30"
+                aria-label={link.name}
+                title={link.name}
               >
-                Code Kong (Pvt) Ltd is a professional, innovative software company committed to delivering exceptional digital solutions.
-              </motion.p>
+                {link.icon}
+              </a>
+            ))}
+          </motion.div>
+        </motion.div>
 
-              <div className="flex flex-col sm:flex-row gap-5">
-                {educationList.map((education, index) => (
-                  <EducationCard 
-                    key={`education-${index}`}
-                    {...education} 
-                  />
-                ))}
-              </div>
-            </motion.div>
+        {/* Education Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className='w-full max-w-4xl mx-auto flex flex-col items-center pointer-events-auto mt-12 mb-16'
+        >
+          <h1 className={`${styles.sectionHeadText}`}>
+            Who We Are
+          </h1>
 
-            {/* Projects Section - Updated width to match Education */}
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="w-full p-6 rounded-2xl pointer-events-auto"
-            >
-              <Projects />
-            </motion.div>
+          <h2 className={`${styles.sectionSubText}`}>
+            About Code Kong
+          </h2>
 
-            {/* Reach Me Section */}
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="w-full px-2 py-6 rounded-2xl pointer-events-auto"
-            >
-              <ReachMe />
-            </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="text-slate-700 dark:text-secondary text-lg sm:text-xl text-center mb-10 max-w-3xl leading-relaxed"
+          >
+            Code Kong (Pvt) Ltd is a professional, innovative software company committed to delivering exceptional digital solutions.
+          </motion.p>
+
+          <div className="flex flex-col sm:flex-row gap-5">
+            {educationList.map((education, index) => (
+              <EducationCard
+                key={`education-${index}`}
+                {...education}
+              />
+            ))}
           </div>
         </motion.div>
+
+        {/* Projects Section - Updated width to match Education */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full p-6 rounded-2xl pointer-events-auto"
+        >
+          <Projects />
+        </motion.div>
+
+        {/* Reach Me Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full px-2 py-6 rounded-2xl pointer-events-auto"
+        >
+          <ReachMe />
+        </motion.div>
+      </div>
     </motion.div>
   );
 };

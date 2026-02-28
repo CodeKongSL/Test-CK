@@ -70,51 +70,51 @@ const ReachMe = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
-      className='w-full max-w-2xl p-6 rounded-2xl pointer-events-auto'
+      className='w-full max-w-4xl mx-auto flex flex-col items-center pointer-events-auto mt-12 mb-16'
     >
-      <h1 className={`${styles.sectionHeadText} text-white`}>
+      <h1 className={`${styles.sectionHeadText}`}>
         Reach Us
       </h1>
 
-      <h2 className={`${styles.sectionSubText} mb-4`}>
+      <h2 className={`${styles.sectionSubText}`}>
         Get in touch
       </h2>
 
-      <p className="text-white-100 text-[15px] mb-5">
+      <p className="text-slate-700 dark:text-secondary text-lg sm:text-xl text-center mb-10 max-w-3xl leading-relaxed">
         Feel free to reach out to us for any inquiries, collaborations, or project discussions.
       </p>
 
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="space-y-3"
+        className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-4"
       >
         {contactItems.map((item, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             variants={itemVariants}
-            className="flex items-center space-x-3 group"
+            className="flex flex-col items-center justify-center p-6 bg-white/60 dark:bg-black-100/40 backdrop-blur-md rounded-2xl border border-slate-200/50 dark:border-tertiary shadow-lg dark:shadow-none group hover:-translate-y-1 transition-all duration-300"
           >
-            <div className="p-2 rounded-full bg-tertiary/20 text-tertiary group-hover:bg-tertiary group-hover:text-white-100 transition-all duration-300">
+            <div className="p-3 mb-3 rounded-full bg-slate-200 dark:bg-black-200 text-slate-700 dark:text-accent group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-accent dark:group-hover:text-black transition-colors duration-300">
               {item.icon}
             </div>
-            <div>
-              <p className="text-secondary text-[13px]">{item.label}</p>
+            <div className="flex flex-col items-center text-center">
+              <p className="text-slate-500 dark:text-secondary text-[13px] font-bold uppercase tracking-wider mb-1">{item.label}</p>
               {item.link ? (
-                <a 
-                  href={item.link} 
-                  target="_blank" 
+                <a
+                  href={item.link}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-[15px] hover:text-tertiary transition-colors duration-300"
+                  className="text-slate-900 dark:text-white text-[15px] font-medium hover:text-blue-600 dark:hover:text-accent transition-colors duration-300"
                 >
                   {item.value}
                 </a>
               ) : (
-                <p className="text-white text-[15px]">{item.value}</p>
+                <p className="text-slate-900 dark:text-white text-[15px] font-medium">{item.value}</p>
               )}
             </div>
           </motion.div>
@@ -125,9 +125,9 @@ const ReachMe = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="mt-6 pt-3 border-t border-tertiary/30 text-center"
+        className="mt-6 pt-3 border-t border-slate-200 dark:border-tertiary/30 text-center"
       >
-        <p className="text-secondary text-xs">Let's create something amazing together!</p>
+        <p className="text-slate-500 dark:text-secondary text-xs">Let's create something amazing together!</p>
       </motion.div>
     </motion.div>
   );

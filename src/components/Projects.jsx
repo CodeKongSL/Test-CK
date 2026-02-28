@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  FaReact, 
-  FaAngular, 
-  FaJava, 
-  FaPython, 
-  FaHtml5, 
+import {
+  FaReact,
+  FaAngular,
+  FaJava,
+  FaPython,
+  FaHtml5,
   FaDatabase,
   FaNodeJs,
   FaCss3
@@ -23,12 +23,12 @@ const TechIcon = ({ Icon, tooltip }) => (
       whileHover={{ scale: 1.2, rotate: 360 }}
       transition={{ duration: 0.3 }}
     >
-      <Icon className="w-8 h-8 text-white hover:text-tertiary transition-colors" />
+      <Icon className="w-8 h-8 text-slate-700 dark:text-white hover:text-slate-900 dark:hover:text-secondary transition-colors" />
     </motion.div>
     <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 
-      bg-black-200 text-white text-xs px-2 py-1 rounded opacity-0 
+      bg-slate-800 dark:bg-black-200 text-white text-xs px-2 py-1 rounded opacity-0 
       group-hover:opacity-100 transition-opacity duration-300 
-      pointer-events-none whitespace-nowrap">
+      pointer-events-none whitespace-nowrap shadow-lg">
       {tooltip}
     </span>
   </div>
@@ -101,23 +101,23 @@ const Projects = () => {
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
-        className='w-full max-w-xl p-6 rounded-2xl pointer-events-auto'
+        className='w-full max-w-4xl mx-auto flex flex-col items-center pointer-events-auto mt-12'
       >
-        <h1 className={`${styles.sectionHeadText} text-white mb-4`}>
+        <h1 className={`${styles.sectionHeadText}`}>
           Projects
         </h1>
 
-        <p className="text-white-100 text-lg mb-8 leading-relaxed">
-          Our projects showcase our expertise in web development and software engineering, 
+        <p className="text-slate-700 dark:text-secondary text-lg sm:text-xl text-center mb-10 max-w-3xl leading-relaxed">
+          Our projects showcase our expertise in web development and software engineering,
           focusing on clean code, scalability, and modern technologies.
         </p>
 
         {/* Tech Stack Section */}
-        <div className="mb-10">
-          <h3 className={`${styles.sectionSubText} text-white mb-6`}>Our Tech Stack</h3>
+        <div className="mb-10 w-full bg-white/30 dark:bg-black-100/20 backdrop-blur-sm p-8 rounded-2xl border border-slate-200/30 dark:border-tertiary/50">
+          <h3 className={`${styles.sectionSubText}`}>Our Tech Stack</h3>
           <div className="flex flex-wrap gap-6 justify-center">
             {techStack.map((tech, index) => (
               <motion.div
@@ -133,13 +133,13 @@ const Projects = () => {
         </div>
 
         {/* Projects Button */}
-        <div className="text-center">
+        <div className="text-center mt-8">
           <motion.button
             onClick={handleProjectsClick}
-            className="group relative bg-gradient-to-r from-tertiary to-tertiary/80 hover:from-tertiary/90 hover:to-tertiary 
-              py-4 px-8 rounded-2xl text-white font-bold shadow-xl hover:shadow-2xl 
+            className="group relative bg-white/60 dark:bg-black-100/40 hover:bg-white/80 dark:hover:bg-black-100/80 backdrop-blur-md
+              py-4 px-8 rounded-2xl text-slate-900 dark:text-white font-bold shadow-lg hover:shadow-xl 
               transition-all duration-300 transform hover:-translate-y-1 
-              border border-tertiary/30 backdrop-blur-sm"
+              border border-slate-200/50 dark:border-tertiary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 20 }}
@@ -162,14 +162,14 @@ const Projects = () => {
                 <ChevronRight size={20} />
               </motion.div>
             </div>
-            
+
             {/* Glow effect */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-tertiary/20 to-tertiary/10 
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-slate-400/20 to-slate-300/10 dark:from-tertiary/20 dark:to-tertiary/10 
               blur-xl group-hover:blur-2xl transition-all duration-300 -z-10" />
           </motion.button>
 
-          <motion.p 
-            className="text-secondary text-sm mt-3 opacity-70"
+          <motion.p
+            className="text-slate-600 dark:text-secondary text-sm mt-3 opacity-70"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
@@ -180,7 +180,7 @@ const Projects = () => {
       </motion.div>
 
       {/* Projects Popup */}
-      <ProjectsPopup 
+      <ProjectsPopup
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
         projects={projectsList}
