@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronRight } from "lucide-react";
 
@@ -66,18 +67,35 @@ const HorizontalProjectCard = ({ title, techStack, year, description, githubLink
 };
 
 const ProjectsPopup = ({ isOpen, onClose, projects, githubProfileUrl }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   const handleGitHubClick = () => {
     window.open(githubProfileUrl, "_blank");
   };
 
-  return (
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/40 dark:bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 pt-20 sm:pt-24"
+          className="fixed inset-0 bg-black/40 dark:bg-black/80 backdrop-blur-md z-[100] flex items-center justify-center p-4 pt-20 sm:pt-24"
           onClick={onClose}
         >
           <motion.div
@@ -197,6 +215,10 @@ const ProjectsPopup = ({ isOpen, onClose, projects, githubProfileUrl }) => {
       )}
     </AnimatePresence>
   );
+
+  if (!mounted) return null;
+
+  return createPortal(modalContent, document.body);
 };
 
 export default ProjectsPopup;
