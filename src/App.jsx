@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { Education, Navbar, StarsCanvas, EarthCanvas, Projects, ReachMe } from "./components";
+import { Education, Navbar, ParticleBackground, Projects, ReachMe } from "./components";
 import { AnimatePresence, motion } from "framer-motion";
 import Home from "./components/Home"; // Importing Home component
 
@@ -15,19 +15,17 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className='relative z-0 bg-primary h-screen'>
-        <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
+      <div className='relative z-0 dark:bg-primary bg-light-primary transition-colors duration-300 min-h-screen'>
+        <div className='bg-hero-pattern-light dark:bg-none bg-cover bg-no-repeat bg-center'>
           <Navbar onNavLinkClick={handlePageChange} activePage={activePage} />
         </div>
 
-        {/* Earth and stars background (persistent) */}
-        <div className='fixed inset-0 z-0'>
-          <StarsCanvas />
-        </div>
+        {/* High Performance HTML5 Canvas Background */}
+        <ParticleBackground />
 
-        {/* Main content layout */}
-        <div className='fixed inset-0 z-10 pt-16 flex'>
-          <div className='w-full lg:w-1/2 h-full pt-2 pb-4 px-4'>
+        {/* Main content layout - Centered and full width */}
+        <div className='relative z-10 pt-24 pb-12 flex justify-center w-full min-h-screen'>
+          <div className='w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
             <AnimatePresence mode="wait">
               {/* Home Page */}
               {activePage === "home" && (
@@ -37,7 +35,7 @@ const App = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="h-full flex justify-center items-center"
+                  className="flex justify-center items-center min-h-[80vh]"
                 >
                   <Home />
                 </motion.div>
@@ -51,7 +49,7 @@ const App = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="h-full flex justify-center items-center"
+                  className="flex justify-center items-center min-h-[80vh]"
                 >
                   <Education />
                 </motion.div>
@@ -65,7 +63,7 @@ const App = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="h-full flex justify-center items-center"
+                  className="flex justify-center items-center min-h-[80vh]"
                 >
                   <Projects />
                 </motion.div>
@@ -79,19 +77,12 @@ const App = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="h-full flex justify-center items-center"
+                  className="flex justify-center items-center min-h-[80vh]"
                 >
                   <ReachMe />
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
-
-          {/* Earth canvas - right side with increased size */}
-          <div className='hidden lg:block lg:w-1/2 h-full'>
-            <div className="w-full h-full scale-90 origin-center flex justify-center items-center">
-              <EarthCanvas />
-            </div>
           </div>
         </div>
       </div>

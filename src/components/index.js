@@ -1,10 +1,11 @@
-import { EarthCanvas, StarsCanvas } from './canvas';
+import { EarthCanvas } from './canvas';
 import Navbar from "./Navbar";
 import Education from "./Education";
 import Projects from "./Projects";
 import ReachMe from "./ReachMe";
 import Home from "./Home";  // ✅ Added Home Component
 import CanvasLoader from "./Loader";
+import ParticleBackground from "./ParticleBackground";
 
 export {
   Navbar,
@@ -13,6 +14,6 @@ export {
   Projects,
   ReachMe,
   CanvasLoader,
-  EarthCanvas, 
-  StarsCanvas
+  EarthCanvas,
+  ParticleBackground
 };
